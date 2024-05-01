@@ -1,0 +1,40 @@
+# Keystone
+- name: Install Keystone packages
+  yum:
+    name:
+      - openstack-keystone
+      - httpd
+      - mod_wsgi
+    state: latest
+
+- name: Keystone Starting / Enabling
+  service:
+    name: httpd.service
+    state: started
+    enabled: true
+
+# Glance
+- name: Install Glance package
+  yum:
+    name: openstack-glance
+    state: latest
+
+- name: Glance Starting / Enabling
+  service:
+    name: openstack-glance-api
+    state: started
+    enabled: true
+
+# Nova
+- name: Install Nova packages
+  yum:
+    name:
+      - openstack-nova-compute
+      - openstack-nova-api
+    state: latest
+
+- name: Nova Starting / Enabling
+  service:
+    name: openstack-nova-api
+    state: started
+    enabled: true

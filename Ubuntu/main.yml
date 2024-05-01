@@ -1,0 +1,38 @@
+# Keystone
+- name: Install Keystone packages
+  apt:
+    name:
+      - keystone
+      - apache2
+      - libapache2-mod-php
+    state: latest
+
+- name: Keystone Starting / Enabling
+  service:
+    name: apache2
+    state: started
+    enabled: true
+
+# Glance
+- name: Install Glance package
+  apt:
+    name: glance
+    state: latest
+
+- name: Glance Starting / Enabling
+  service:
+    name: glance-api
+    state: started
+    enabled: true
+
+# Nova
+- name: Install Nova package
+  apt:
+    name: nova-compute
+    state: latest
+
+- name: Nova Starting / Enabling
+  service:
+    name: nova-compute
+    state: started
+    enabled: true
